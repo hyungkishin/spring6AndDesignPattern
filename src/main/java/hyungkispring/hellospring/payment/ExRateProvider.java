@@ -1,4 +1,4 @@
-package hyungkispring.hellospring;
+package hyungkispring.hellospring.payment;
 
 import java.io.IOException;
 import java.math.BigDecimal;

@@ -1,5 +1,7 @@
 package hyungkispring.hellospring;
 
+import hyungkispring.hellospring.payment.Payment;
+import hyungkispring.hellospring.payment.PaymentService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 

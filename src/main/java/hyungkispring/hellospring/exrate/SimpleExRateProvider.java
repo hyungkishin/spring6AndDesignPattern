@@ -1,6 +1,6 @@
-package hyungkispring.hellospring;
+package hyungkispring.hellospring.exrate;
 
-import org.springframework.stereotype.Component;
+import hyungkispring.hellospring.payment.ExRateProvider;
 
 import java.io.IOException;
 import java.math.BigDecimal;
