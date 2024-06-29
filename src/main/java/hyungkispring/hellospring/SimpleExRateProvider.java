@@ -1,8 +1,11 @@
 package hyungkispring.hellospring;
 
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.math.BigDecimal;
 
+@Component
 public class SimpleExRateProvider implements ExRateProvider {
 
     @Override
@@ -11,5 +14,5 @@ public class SimpleExRateProvider implements ExRateProvider {
 
         throw new IllegalArgumentException("지원되지 않은 통화 입니다.");
     }
-    
+
 }
