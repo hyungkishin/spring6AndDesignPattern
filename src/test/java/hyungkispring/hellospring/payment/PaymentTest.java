@@ -1,9 +1,15 @@
 package hyungkispring.hellospring.payment;
 
 import org.assertj.core.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.Clock;
 import java.time.Duration;
@@ -15,34 +21,39 @@ import java.time.temporal.ChronoUnit;
 import static java.math.BigDecimal.valueOf;
 import static org.assertj.core.api.Assertions.assertThat;
 
+@ExtendWith(SpringExtension.class)
+@ContextConfiguration(classes = TestPaymentConfig.class)
 public class PaymentTest {
 
-    @Test
-    void createPrepared() {
-        Clock clock = Clock.fixed(Instant.now(), ZoneId.systemDefault());
+    @Autowired
+    private ExRateProvider exRateProvider;
 
+    @Autowired
+    private Clock clock;
+
+
+    @Test
+    void createPrepared() throws IOException {
         Payment payment = Payment.createPrepared(
                 1L,
                 "USD",
                 BigDecimal.TEN,
-                valueOf(1_000),
-                LocalDateTime.now(clock)
+                exRateProvider,
+                clock
         );
 
         assertThat(payment.getConvertedAmount()).isEqualByComparingTo(valueOf(10_000));
-        assertThat(payment.getValidUntil()).isEqualTo(LocalDateTime.now(clock).plusMinutes(30));
+        assertThat(payment.getValidUntil()).isEqualTo(LocalDateTime.now(this.clock).plusMinutes(30));
     }
 
     @Test
-    void isValid() {
-        Clock clock = Clock.fixed(Instant.now(), ZoneId.systemDefault());
-
+    void isValid() throws IOException {
         Payment payment = Payment.createPrepared(
                 1L,
                 "USD",
                 BigDecimal.TEN,
-                valueOf(1_000),
-                LocalDateTime.now(clock)
+                exRateProvider,
+                clock
         );
 
         assertThat(payment.isValid(clock)).isTrue();
