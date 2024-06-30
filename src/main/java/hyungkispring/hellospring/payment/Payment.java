@@ -41,7 +41,7 @@ public class Payment {
                                          String currency,
                                          BigDecimal foreignCurrencyAmount,
                                          ExRateProvider exRateProvider,
-                                         Clock clock) throws IOException {
+                                         Clock clock) {
         // 환율정보
         BigDecimal exRate;
 

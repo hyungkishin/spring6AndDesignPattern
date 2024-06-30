@@ -26,14 +26,18 @@ import static org.assertj.core.api.Assertions.assertThat;
 public class PaymentTest {
 
     @Autowired
-    private ExRateProvider exRateProvider;
+    private ExRateProviderStub exRateProvider;
 
     @Autowired
     private Clock clock;
 
+    @BeforeEach
+    void setUp() {
+        exRateProvider.setExRate(valueOf(1_000));
+    }
 
     @Test
-    void createPrepared() throws IOException {
+    void createPrepared() {
         Payment payment = Payment.createPrepared(
                 1L,
                 "USD",
@@ -47,7 +51,7 @@ public class PaymentTest {
     }
 
     @Test
-    void isValid() throws IOException {
+    void isValid() {
         Payment payment = Payment.createPrepared(
                 1L,
                 "USD",
