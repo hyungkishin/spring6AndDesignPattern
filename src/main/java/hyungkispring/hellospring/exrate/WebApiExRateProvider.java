@@ -1,21 +1,23 @@
 package hyungkispring.hellospring.exrate;
 
 import hyungkispring.hellospring.api.ApiTemplate;
-import hyungkispring.hellospring.api.ErApiExRateExtractor;
-import hyungkispring.hellospring.api.HttpClientApiExecutor;
 import hyungkispring.hellospring.payment.ExRateProvider;
 
 import java.math.BigDecimal;
 
 public class WebApiExRateProvider implements ExRateProvider {
 
-    ApiTemplate apiTemplate = new ApiTemplate();
+    private final ApiTemplate apiTemplate;
+
+    public WebApiExRateProvider(ApiTemplate apiTemplate) {
+        this.apiTemplate = apiTemplate;
+    }
 
     @Override
     public BigDecimal getExRate(String currency) {
         String url = "https://open.er-api.com/v6/latest/" + currency;
 
-        return apiTemplate.getExRate(url, new HttpClientApiExecutor(), new ErApiExRateExtractor()); // 콜백
+        return apiTemplate.getExRate(url);
     }
 
 }

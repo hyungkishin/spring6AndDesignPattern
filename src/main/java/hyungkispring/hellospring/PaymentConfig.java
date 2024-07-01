@@ -1,5 +1,8 @@
 package hyungkispring.hellospring;
 
+import hyungkispring.hellospring.api.ApiTemplate;
+import hyungkispring.hellospring.api.ErApiExRateExtractor;
+import hyungkispring.hellospring.api.SimpleApiExecutor;
 import hyungkispring.hellospring.exrate.CachedExRateProvider;
 import hyungkispring.hellospring.payment.ExRateProvider;
 import hyungkispring.hellospring.exrate.WebApiExRateProvider;
@@ -10,7 +13,7 @@ import org.springframework.context.annotation.Configuration;
 import java.time.Clock;
 
 @Configuration
-public class ObjectFactory {
+public class PaymentConfig {
 
     @Bean
     public PaymentService paymentService() {
@@ -23,8 +26,13 @@ public class ObjectFactory {
     }
 
     @Bean
+    public ApiTemplate apiTemplate() {
+        return new ApiTemplate(new SimpleApiExecutor(), new ErApiExRateExtractor());
+    }
+
+    @Bean
     public ExRateProvider exRateProvider() {
-        return new WebApiExRateProvider();
+        return new WebApiExRateProvider(apiTemplate());
     }
 
     @Bean
