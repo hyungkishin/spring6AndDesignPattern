@@ -1,5 +1,6 @@
 package hyungkispring.hellospring;
 
+import hyungkispring.hellospring.data.OrderRepository;
 import hyungkispring.hellospring.order.Order;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.EntityManagerFactory;
@@ -12,18 +13,17 @@ public class DataClient {
 
     public static void main(String[] args) throws InterruptedException {
         BeanFactory beanFactory = new AnnotationConfigApplicationContext(DataConfig.class);
-        EntityManagerFactory emf = beanFactory.getBean(EntityManagerFactory.class);
-
-        EntityManager em = emf.createEntityManager();
-        em.getTransaction().begin();
+        OrderRepository orderRepository = beanFactory.getBean(OrderRepository.class);
 
         Order order = new Order("100", BigDecimal.TEN);
-        em.persist(order);
+        orderRepository.save(order);
 
-        System.out.println(order);
+        System.out.println("order = " + order);
 
-        em.getTransaction().commit();
-        em.close();
+        Order order1 = new Order("200", BigDecimal.TEN);
+        orderRepository.save(order1);
+
+        System.out.println("order = " + order);
     }
 
 }

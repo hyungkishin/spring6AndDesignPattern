@@ -1,5 +1,7 @@
 package hyungkispring.hellospring;
 
+import hyungkispring.hellospring.data.OrderRepository;
+import jakarta.persistence.EntityManagerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
@@ -31,4 +33,10 @@ public class DataConfig {
         }});
         return emf;
     }
+
+    @Bean
+    public OrderRepository orderRepository(EntityManagerFactory emf) {
+        return new OrderRepository(emf);
+    }
+
 }
