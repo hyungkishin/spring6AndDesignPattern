@@ -1,6 +1,7 @@
 package hyungkispring.hellospring;
 
-import hyungkispring.hellospring.data.OrderRepository;
+import hyungkispring.hellospring.data.JpaOrderRepository;
+import hyungkispring.hellospring.order.OrderRepository;
 import hyungkispring.hellospring.order.OrderService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -13,7 +14,7 @@ public class OrderConfig {
 
     @Bean
     public OrderRepository orderRepository() {
-        return new OrderRepository();
+        return new JpaOrderRepository();
     }
 
     @Bean

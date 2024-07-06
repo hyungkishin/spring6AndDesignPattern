@@ -1,6 +1,5 @@
 package hyungkispring.hellospring;
 
-import hyungkispring.hellospring.data.OrderRepository;
 import jakarta.persistence.EntityManagerFactory;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

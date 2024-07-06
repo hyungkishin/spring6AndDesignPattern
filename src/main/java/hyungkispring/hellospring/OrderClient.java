@@ -1,14 +1,9 @@
 package hyungkispring.hellospring;
 
-import hyungkispring.hellospring.data.OrderRepository;
 import hyungkispring.hellospring.order.Order;
 import hyungkispring.hellospring.order.OrderService;
 import org.springframework.beans.factory.BeanFactory;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.dao.DataIntegrityViolationException;
-import org.springframework.orm.jpa.JpaTransactionManager;
-import org.springframework.transaction.annotation.Transactional;
-import org.springframework.transaction.support.TransactionTemplate;
 
 import java.math.BigDecimal;
 
