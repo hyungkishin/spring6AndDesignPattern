@@ -4,16 +4,16 @@ import hyungkispring.hellospring.data.JdbcOrderRepository;
 import hyungkispring.hellospring.order.OrderRepository;
 import hyungkispring.hellospring.order.OrderService;
 import hyungkispring.hellospring.order.OrderServiceImpl;
-import hyungkispring.hellospring.order.OrderServiceTxProxy;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
-import org.springframework.transaction.PlatformTransactionManager;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import javax.sql.DataSource;
 
 @Configuration
 @Import(DataConfig.class)
+@EnableTransactionManagement
 public class OrderConfig {
 
     @Bean
@@ -22,13 +22,8 @@ public class OrderConfig {
     }
 
     @Bean
-    public OrderService orderService(
-            PlatformTransactionManager transactionManager,
-            OrderRepository orderRepository
-    ) {
-        return new OrderServiceTxProxy(
-                new OrderServiceImpl(orderRepository)
-                , transactionManager);
+    public OrderService orderService(OrderRepository orderRepository) {
+        return new OrderServiceImpl(orderRepository);
     }
 
 }
