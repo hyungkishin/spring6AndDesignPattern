@@ -1,16 +1,7 @@
 package hyungkispring.pattern.singleton;
 
-public class Settings {
+public enum Settings {
 
-    private Settings() {
-    }
-
-    private static class SettingsHolder {
-        private static final Settings INSTANCE = new Settings();
-    }
-
-    public static Settings getInstance() {
-       return SettingsHolder.INSTANCE;
-    }
+    INSTANCE;
 
 }
