@@ -3,11 +3,13 @@ package hyungkispring.pattern.factory.after;
 public class Client {
 
     public static void main(String[] args) {
-        Ship whiteShip = new WhiteShipFactory().orderShip("WhiteShip", "tkaqkeldk@naver.com");
-        System.out.println("whiteShip = " + whiteShip);
+        Client client = new Client();
+        client.print(new WhiteShipFactory(), "whiteShip", "kesun@mail.com");
+        client.print(new BlackShipFactory(), "BlackShip", "tkaqkeldk99@naver.com");
+    }
 
-        Ship blackShip = new BlackShipFactory().orderShip("BlackShip", "tkaqkeldk99@naver.com");
-        System.out.println("blackShip = " + blackShip);
+    private void print(ShipFactory shipFactory, String name, String email) {
+        System.out.println(shipFactory.orderShip(name, email));
     }
 
 }
