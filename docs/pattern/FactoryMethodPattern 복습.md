@@ -125,3 +125,39 @@ public class Main {
 
 > 결국 OCP 를 만족하려면, interface 로 인해 추상화가 한번 들어간다. <br/>
 > 추상화로 인해 느슨한 결합으로 객체지향적 코드를 만족 할 수 있게됨을 확인하였다.
+
+
+### java8 의 default 메서드 를 추가하면 좋은점
+- 인터페이스의 유연한 확장
+  - 기존에 인터페이스에 새로운 메서드를 추가하면, 그 인터페이스를 구현하는 모든 클래스에서 해당 메서드를 구현해야 했다.
+  - 그러나 default 메서드를 사용하면, 인터페이스에 새로운 메서드를 추가하면서도 기존 구현 클래스에 영향을 주지 않을 수 있다.
+```java
+
+public interface MyInterface {
+    void existingMethod();
+
+    default void newDefaultMethod() {
+        System.out.println("This is a default method");
+    }
+}
+```
+
+- 코드 중복 감소 
+  - 여러 클래스에서 공통으로 사용되는 로직을 인터페이스의 default 메서드로 정의하여 코드 중복을 줄일 수 있다.
+  - 이를 통해 코드의 재사용성을 높이고 유지보수를 쉽게 할 수 있다
+```java
+public interface MyInterface {
+    void existingMethod();
+
+    default void commonMethod() {
+        System.out.println("Common logic here");
+    }
+}
+
+public class MyClass implements MyInterface {
+    @Override
+    public void existingMethod() {
+        // Implementation here
+    }
+}
+```
