@@ -1,7 +1,7 @@
 package hyungkispring.pattern.abstracts.after;
 
-import me.whiteship.designpatterns._01_creational_patterns._02_factory_method._02_after.Ship;
-import me.whiteship.designpatterns._01_creational_patterns._02_factory_method._02_after.ShipFactory;
+import hyungkispring.pattern.factory.after.Ship;
+import hyungkispring.pattern.factory.after.ShipFactory;
 
 public class ShipInventory {
 

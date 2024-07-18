@@ -4,24 +4,17 @@ public interface ShipFactory {
 
     default Ship orderShip(String name, String email) {
         validate(name, email);
-
         prepareFor(name);
-
         Ship ship = createShip();
-        ship.setName(name);
-
         sendEmailTo(email, ship);
         return ship;
     }
 
-    private void sendEmailTo(String email, Ship ship) {
-        System.out.println(ship.getName() + " 다 만들었습니다.");
-    }
+    void sendEmailTo(String email, Ship ship);
 
     Ship createShip();
 
     private void validate(String name, String email) {
-        // validate
         if (name == null || name.isBlank()) {
             throw new IllegalArgumentException("배 이름을 지어주세요.");
         }

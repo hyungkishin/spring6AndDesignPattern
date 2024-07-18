@@ -1,7 +1,7 @@
 package hyungkispring.pattern.abstracts.after;
 
-import me.whiteship.designpatterns._01_creational_patterns._03_abstract_factory._01_before.WhiteAnchor;
-import me.whiteship.designpatterns._01_creational_patterns._03_abstract_factory._01_before.WhiteWheel;
+import hyungkispring.pattern.abstracts.before.WhiteAnchor;
+import hyungkispring.pattern.abstracts.before.WhiteWheel;
 
 public class WhiteshipPartsFactory implements ShipPartsFactory {
 
