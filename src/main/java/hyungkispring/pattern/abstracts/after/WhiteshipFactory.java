@@ -1,10 +1,9 @@
 package hyungkispring.pattern.abstracts.after;
 
-import me.whiteship.designpatterns._01_creational_patterns._02_factory_method._02_after.DefaultShipFactory;
-import me.whiteship.designpatterns._01_creational_patterns._02_factory_method._02_after.Ship;
-import me.whiteship.designpatterns._01_creational_patterns._02_factory_method._02_after.Whiteship;
-import me.whiteship.designpatterns._01_creational_patterns._03_abstract_factory._01_before.WhiteAnchor;
-import me.whiteship.designpatterns._01_creational_patterns._03_abstract_factory._01_before.WhiteWheel;
+
+import hyungkispring.pattern.abstracts.before.DefaultShipFactory;
+import hyungkispring.pattern.factory.after.Ship;
+import hyungkispring.pattern.factory.after.WhiteShip;
 
 public class WhiteshipFactory extends DefaultShipFactory {
 
@@ -16,7 +15,7 @@ public class WhiteshipFactory extends DefaultShipFactory {
 
     @Override
     public Ship createShip() {
-        Ship ship = new Whiteship();
+        Ship ship = new WhiteShip();
         ship.setAnchor(shipPartsFactory.createAnchor());
         ship.setWheel(shipPartsFactory.createWheel());
         return ship;
