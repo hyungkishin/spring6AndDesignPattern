@@ -6,6 +6,8 @@ import java.time.LocalDate;
 
 public interface TourPlanBuilder {
 
+    TourPlanBuilder newInstance();
+
     TourPlanBuilder nightAndDays(int nights, int days);
 
     TourPlanBuilder title(String title);

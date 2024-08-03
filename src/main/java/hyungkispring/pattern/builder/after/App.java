@@ -1,8 +1,7 @@
 package hyungkispring.pattern.builder.after;
 
-import hyungkispring.pattern.builder.before.TourPlan;
-
-import java.time.LocalDate;
+import org.springframework.web.util.UriComponents;
+import org.springframework.web.util.UriComponentsBuilder;
 
 public class App {
 
@@ -24,6 +23,14 @@ public class App {
         System.out.println("tourDirector.cancunTrip() = " + tourDirector.cancunTrip());
         System.out.println("tourDirector.longBeach() = " + tourDirector.longBeach());
 
+
+        // spring framework 에서 제공하는 api 중, UriComponentsBuilder 의 builder 예시
+        UriComponents http = UriComponentsBuilder.newInstance()
+                .scheme("http")
+                .host("www.hyungkishin.com")
+                .path("/what-is/builder")
+                .build().encode();
+        System.out.println("http = " + http);
     }
 
 }
