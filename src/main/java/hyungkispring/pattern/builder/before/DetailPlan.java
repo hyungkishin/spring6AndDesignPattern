@@ -1,4 +1,4 @@
-package hyungkispring.pattern.builder;
+package hyungkispring.pattern.builder.before;
 
 public class DetailPlan {
 
